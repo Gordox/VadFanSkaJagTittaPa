@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class OMDB {
+class OMDB {
 	
 	public static final String SHORT_PLOT = "short";
 	public static final String FULL_PLOT = "full";
@@ -41,7 +41,7 @@ public class OMDB {
 	
 	private ObjectMapper mapper;
 	
-	public OMDB() {
+	OMDB() {
 		mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
@@ -61,7 +61,7 @@ public class OMDB {
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	public OmdbResponse search(String title) throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
+	OmdbResponse search(String title) throws IOException {
 		setURL(title, "", plot);
 		return mapper.readValue(new URL(url), OmdbResponse.class);
 	}
@@ -75,13 +75,13 @@ public class OMDB {
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	public OmdbResponse search(String title, String year) throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
+	OmdbResponse search(String title, String year) throws IOException {
 		setURL(title, year, plot);
 		return mapper.readValue(new URL(url), OmdbResponse.class);
 	}
 	
 	private void setURL(String title, String year, String plot) {
 		title = title.replaceAll(" ", "+").trim();
-		url = url.replace(TITLE_TAG, title).replace(YEAR_TAG, "").replace(PLOT_TAG, plot);
+		url = url.replace(TITLE_TAG, title).replace(YEAR_TAG, year).replace(PLOT_TAG, plot);
 	}
 }

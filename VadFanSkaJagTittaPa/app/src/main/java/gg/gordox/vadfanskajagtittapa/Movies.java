@@ -8,10 +8,10 @@ import java.util.HashMap;
  * Created by Simon on 2016-10-27.
  */
 
-public class Movies {
+class Movies {
     private static HashMap<String, String[]> data;
 
-    public static String[] getTitles(String genre) {
+    static String[] getTitles(String genre) {
         return data.get(genre);
     }
 
