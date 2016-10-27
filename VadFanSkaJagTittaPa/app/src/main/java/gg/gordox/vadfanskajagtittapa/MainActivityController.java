@@ -1,56 +1,60 @@
 package gg.gordox.vadfanskajagtittapa;
 
+import android.util.Log;
 import android.view.View;
 
 /**
  * Created by Spellabbet on 2016-10-27.
  */
 
-public class MainActivityController {
+class MainActivityController {
 
     private MainActivity activity;
 
-    String Gender = "", Mood = "", Genre = "";
+    private String gender = "", mood = "", genre = "";
 
-    public MainActivityController(MainActivity activity){
+    MainActivityController(MainActivity activity) {
         this.activity = activity;
+        OmdbController.getInstance().connectController(this);
     }
 
-    public void GenderClick(View view){
+    void GenderClick(View view){
         if(view.getId() == R.id.bn_Gender_Male){
-            Gender = "Male";
+            gender = "Male";
         }else if(view.getId() == R.id.bn_Gender_Female){
-            Gender = "Female";
+            gender = "Female";
         }else if(view.getId() == R.id.bn_Gender_TosaPog){
-            Gender = "TosaPog";
+            gender = "TosaPog";
         }
         else{
-            Gender = "";
+            gender = "";
         }
     }
 
-    public void MoodClick(View view){
+    void MoodClick(View view){
         if(view.getId() == R.id.bn_Mood_Happy){
-            Mood = "Happy";
+            mood = "Happy";
         }else if(view.getId() == R.id.bn_Mood_Sad){
-            Mood = "Sad";
+            mood = "Sad";
         }else if(view.getId() == R.id.bn_Mood_Angry){
-            Mood = "Angry";
+            mood = "Angry";
         }else if(view.getId() == R.id.bn_Mood_Content){
-            Mood = "Content";
+            mood = "Content";
         }else if(view.getId() == R.id.bn_Mood_Sleepy){
-            Mood = "Sleepy";
+            mood = "Sleepy";
         }else{
-            Mood = "";
+            mood = "";
         }
     }
 
-    public void SearchClick(View view){
-        Genre = activity.getPreferedGenre().getSelectedItem().toString();
-
-        //More shit here
-
-
+    void SearchClick(View view){
+        genre = activity.getPreferedGenre().getSelectedItem().toString();
+        Log.e("SIMON SAYS", genre);
+        OmdbController.getInstance().search(genre);
     }
 
+    void onMoviesReceived() {
+        MovieListFragment movieListFragment = new MovieListFragment();
+        movieListFragment.show(activity.getFragmentManager(), "MovieListFragment");
+    }
 }

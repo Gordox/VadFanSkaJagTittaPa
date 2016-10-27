@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity{
         spPreferredGenre = (Spinner) findViewById(R.id.sp_Genera_Preference_Selector);
         loadSpinnerData();
 
+        Movies.init(this);
         controller = new MainActivityController(this);
     }
 
@@ -95,12 +96,7 @@ public class MainActivity extends AppCompatActivity{
         spPreferredGenre.setAdapter(genreAdapter);
     }
 
-
-    //Getter
     public Spinner getPreferedGenre(){
         return spPreferredGenre;
     }
-
-
-
 }

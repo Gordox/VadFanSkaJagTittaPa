@@ -16,5 +16,8 @@
         <string name="button_search">Search</string>
         <string name="text_view_select_genre">Select preferred genre:</string>
 
+        <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
