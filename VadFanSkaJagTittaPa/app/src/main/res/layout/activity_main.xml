@@ -29,7 +29,8 @@
                 app:srcCompat="@android:drawable/btn_dialog"
                 android:id="@+id/bn_Gender_Male"
                 android:layout_weight="1"
-                android:minHeight="50dp" />
+                android:minHeight="50dp"
+                android:onClick="OnGenderClick" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -37,7 +38,8 @@
                 app:srcCompat="@android:drawable/btn_star_big_on"
                 android:id="@+id/bn_Gender_Female"
                 android:layout_weight="1"
-                android:minHeight="50dp" />
+                android:minHeight="50dp"
+                android:onClick="OnGenderClick" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -45,7 +47,8 @@
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:id="@+id/bn_Gender_TosaPog"
                 android:layout_weight="1"
-                android:minHeight="50dp" />
+                android:minHeight="50dp"
+                android:onClick="OnGenderClick" />
 
         </LinearLayout>
 
@@ -61,33 +64,38 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:id="@+id/bn_Mood_Happy"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="OnMoodClick" />
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:layout_weight="1"
-                android:id="@+id/bn_Mood_Sad" />
+                android:id="@+id/bn_Mood_Sad"
+                android:onClick="OnMoodClick" />
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:id="@+id/bn_Mood_Angry"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="OnMoodClick" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:id="@+id/bn_Mood_Content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="OnMoodClick" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/btn_star_big_off"
                 android:id="@+id/bn_Mood_Sleepy"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="OnMoodClick" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,7 +136,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bn_Search"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="OnSearchClick" />
         </LinearLayout>
 
     </LinearLayout>
