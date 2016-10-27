@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/LICENSE'
     }
 }
@@ -30,8 +30,10 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/API-OMDB-1.2.jar')
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+
     compile files('libs/API-OMDB-1.2.jar')
     compile 'com.google.android.gms:play-services-auth:9.0.2'
     compile 'pub.devrel:easypermissions:0.1.5'
