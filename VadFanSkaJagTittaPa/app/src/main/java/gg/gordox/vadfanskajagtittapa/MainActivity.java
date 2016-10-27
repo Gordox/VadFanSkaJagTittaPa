@@ -2,6 +2,11 @@ package gg.gordox.vadfanskajagtittapa;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.omertron.omdbapi.emumerations.PlotType;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
