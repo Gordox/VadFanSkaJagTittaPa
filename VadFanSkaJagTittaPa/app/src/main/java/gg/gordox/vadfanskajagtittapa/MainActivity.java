@@ -1,5 +1,6 @@
 package gg.gordox.vadfanskajagtittapa;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,14 +13,18 @@ import android.widget.Spinner;
 import com.omertron.omdbapi.emumerations.PlotType;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity{
 
     private ImageButton bnGenderMale, bnGenderFemale, bnGenderTosaPog;
     private ImageButton bnMoodHappy, bnMoodSad, bnMoodAngry, bnMoodContent, bnMoodSleepy;
     private Button bnSearch;
-    private Spinner spPreferedGenre;
+    private Spinner spPreferredGenre;
     private MainActivityController controller;
 
 
@@ -62,29 +67,38 @@ public class MainActivity extends AppCompatActivity{
 
         bnSearch = (Button) findViewById(R.id.bn_Search);
 
-        spPreferedGenre = (Spinner) findViewById(R.id.sp_Genera_Preference_Selector);
+        spPreferredGenre = (Spinner) findViewById(R.id.sp_Genera_Preference_Selector);
+        loadSpinnerData();
 
         controller = new MainActivityController(this);
     }
 
     private void loadSpinnerData(){
-//        // Spinner Drop down elements
-//        //List<String> categories = fDataBase.getICategory();
-//       // categories.addAll(fDataBase.getECategory());
-//
-//        // Creating adapter for spinner
-//      //  ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),
-//                android.R.layout.simple_spinner_item, categories);
-//
-//        // attaching data adapter to spinner
-//        spCategory.setAdapter(dataAdapter);
+        // Spinner Drop down elements
+        List<String> GenreList = new ArrayList<String>();
 
+        //Populate the Genre list
+        GenreList.add(getString(R.string.genre_none));
+        GenreList.add(getString(R.string.genre_action));
+        GenreList.add(getString(R.string.genre_adventure));
+        GenreList.add(getString(R.string.genre_comedy));
+        GenreList.add(getString(R.string.genre_drama));
+        GenreList.add(getString(R.string.genre_horror));
+        GenreList.add(getString(R.string.genre_romance));
+        GenreList.add(getString(R.string.genre_science_fiction));
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> genreAdapter = new ArrayAdapter<String>(this ,
+                android.R.layout.simple_spinner_item, GenreList);
+
+        // attaching genera adapter to spinner
+        spPreferredGenre.setAdapter(genreAdapter);
     }
 
 
     //Getter
     public Spinner getPreferedGenre(){
-        return spPreferedGenre;
+        return spPreferredGenre;
     }
 
 
