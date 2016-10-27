@@ -1,33 +1,48 @@
 package gg.gordox.vadfanskajagtittapa;
 
+import android.util.Log;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Stack;
 
 /**
  * Created by Simon on 2016-10-27.
  */
-public class OmdbController {
+    class OmdbController {
     private static OmdbController ourInstance = new OmdbController();
-    public static OmdbController getInstance() {
+    static OmdbController getInstance() {
         return ourInstance;
     }
-    private OMDB omdb = new OMDB();
 
     private OmdbController() {
-
     }
 
-    public void search(String genre) {
+    void search(String genre) {
+        new OmdbTask(Movies.getTitles(genre)).start();
     }
 
-    private class OmdbTask implements Runnable {
-        public OmdbTask() {
+    private class OmdbTask extends Thread {
+        Stack<String> titles;
+        OmdbTask(String[] titles) {
+            this.titles = new Stack<>();
+            Collections.addAll(this.titles, titles);
         }
 
         public void run() {
             try {
-                OmdbResponse response = omdb.search("");
+                while(!titles.isEmpty()) {
+                    String title = titles.pop();
+                    OMDB omdb = new OMDB();
+                    omdb.setPlot(OMDB.FULL_PLOT);
+                    OmdbResponse response = omdb.search(title);
+
+                    Log.e("TITLE", response.getTitle());
+                    Log.e("YEAR", response.getYear());
+                    Log.e("POSTER", response.getActors());
+                    Log.e("POSTER", response.getPoster());
+                    Log.e("PLOT", response.getPlot());
+                }
             } catch (IOException ignored) {
 
             }
