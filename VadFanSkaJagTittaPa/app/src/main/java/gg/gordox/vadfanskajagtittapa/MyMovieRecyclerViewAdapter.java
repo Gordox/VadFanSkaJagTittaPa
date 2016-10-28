@@ -30,6 +30,8 @@ class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerVie
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.movie = movieList.get(position);
         holder.tvTitle.setText(movieList.get(position).title);
+        holder.tvGenre.setText(movieList.get(position).genre);
+        holder.tvReleaseDate.setText(movieList.get(position).releaseDate);
         //holder.ivPoster.setImageResource(/*id here*/);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +50,8 @@ class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerVie
     class ViewHolder extends RecyclerView.ViewHolder {
         private final View mView;
         private final TextView tvTitle;
+        private final TextView tvGenre;
+        private final TextView tvReleaseDate;
         private final ImageView ivPoster;
         private Movie movie;
 
@@ -55,6 +59,8 @@ class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerVie
             super(view);
             mView = view;
             tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+            tvGenre = (TextView) view.findViewById(R.id.tvGenre);
+            tvReleaseDate = (TextView) view.findViewById(R.id.tvReleaseDate);
             ivPoster = (ImageView) view.findViewById(R.id.ivPoster);
         }
     }

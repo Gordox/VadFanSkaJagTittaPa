@@ -16,21 +16,22 @@ import java.util.Stack;
     static OmdbController getInstance() {
         return ourInstance;
     }
-    MainActivityController controller;
+    private MainActivityController controller;
 
     private OmdbController() {
     }
 
-    public void connectController(MainActivityController controller) {
+    void connectController(MainActivityController controller) {
         this.controller = controller;
     }
 
     void search(String genre) {
         movies = new ArrayList<>();
+        Log.e("SIMON SAYS", genre);
         new OmdbTask(Movies.getTitles(genre)).start();
     }
 
-    public ArrayList<Movie> getMovies(){
+    ArrayList<Movie> getMovies(){
         return movies;
     }
 
@@ -49,7 +50,7 @@ import java.util.Stack;
                     omdb.setPlot(OMDB.FULL_PLOT);
                     OmdbResponse response = omdb.search(title);
 
-                    movies.add(new Movie(response.getTitle(), response.getYear(), response.getPlot(), response.getPoster()));
+                    movies.add(new Movie(response.getTitle(), response.getYear(), response.getGenre(), response.getPlot(), response.getPoster()));
 
 //                    Log.e("TITLE", response.getTitle());
 //                    Log.e("YEAR", response.getYear());
