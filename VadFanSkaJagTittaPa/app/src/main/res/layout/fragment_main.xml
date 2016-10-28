@@ -25,7 +25,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_dialog"
+                    app:srcCompat="@drawable/male"
                     android:id="@+id/bn_Gender_Male"
                     android:layout_weight="1"
                     android:minHeight="50dp"
@@ -34,7 +34,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
+                    app:srcCompat="@drawable/hen"
                     android:id="@+id/bn_Gender_Female"
                     android:layout_weight="1"
                     android:minHeight="50dp"/>
@@ -42,7 +42,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/female"
                     android:id="@+id/bn_Gender_TosaPog"
                     android:layout_weight="1"
                     android:minHeight="50dp" />
@@ -59,21 +59,23 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/happySmall"
                     android:id="@+id/bn_Mood_Happy"
                     android:layout_weight="1"
                     android:onClick="OnMoodClick" />
+
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/sadSmall"
                     android:layout_weight="1"
                     android:id="@+id/bn_Mood_Sad"
                     android:onClick="OnMoodClick" />
+
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/angrySmall"
                     android:id="@+id/bn_Mood_Angry"
                     android:layout_weight="1"
                     android:onClick="OnMoodClick" />
@@ -81,7 +83,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/calmSmall"
                     android:id="@+id/bn_Mood_Content"
                     android:layout_weight="1"
                     android:onClick="OnMoodClick" />
@@ -89,7 +91,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_off"
+                    app:srcCompat="@drawable/sleepSmall"
                     android:id="@+id/bn_Mood_Sleepy"
                     android:layout_weight="1"
                     android:onClick="OnMoodClick" />
