@@ -1,6 +1,5 @@
 package gg.gordox.vadfanskajagtittapa;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,14 +9,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import com.omertron.omdbapi.emumerations.PlotType;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -26,18 +19,16 @@ public class MainActivity extends AppCompatActivity{
     private Button bnSearch;
     private Spinner spPreferredGenre;
     private MainActivityController controller;
-
-
+    private WeatherRetreiver weather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Init();
     }
-
-
 
     public void OnGenderClick(View v){
         controller.GenderClick(v);
@@ -72,6 +63,9 @@ public class MainActivity extends AppCompatActivity{
 
         Movies.init(this);
         controller = new MainActivityController(this);
+
+        weather = new WeatherRetreiver(this);
+        weather.run();
     }
 
     private void loadSpinnerData(){

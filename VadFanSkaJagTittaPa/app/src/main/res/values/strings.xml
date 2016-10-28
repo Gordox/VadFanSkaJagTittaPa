@@ -2,6 +2,9 @@
         <!-- Application name -->
         <string name="app_name">VadFanSkaJagTittaPa</string>
 
+        <!--  -->
+        <string name="progress_weather">Hämtar vädret</string>
+
         <!-- Genera that are used -->
         <string name="genre_action">Action</string>
         <string name="genre_none">None</string>
