@@ -25,7 +25,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 class OMDB {
 	
 	public static final String SHORT_PLOT = "short";
@@ -49,7 +48,7 @@ class OMDB {
 	/**
 	 * @param plot Plot can be either short or full. Usage: OMDB.SHORT_PLOT for short plot and OMDB.FULL_PLOT for the full plot.
 	 */
-	public void setPlot(String plot) {
+	void setPlot(String plot) {
 		this.plot = plot;
 	}
 	
@@ -63,20 +62,6 @@ class OMDB {
 	 */
 	OmdbResponse search(String title) throws IOException {
 		setURL(title, "", plot);
-		return mapper.readValue(new URL(url), OmdbResponse.class);
-	}
-	
-	/**
-	 * @param title
-	 * @param year
-	 * @return OmdbResponse object containing all the attributes
-	 * @throws JsonParseException
-	 * @throws JsonMappingException
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 */
-	OmdbResponse search(String title, String year) throws IOException {
-		setURL(title, year, plot);
 		return mapper.readValue(new URL(url), OmdbResponse.class);
 	}
 	

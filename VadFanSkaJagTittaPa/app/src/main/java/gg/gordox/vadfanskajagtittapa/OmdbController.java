@@ -16,12 +16,12 @@ import java.util.Stack;
     static OmdbController getInstance() {
         return ourInstance;
     }
-    private MainActivityController controller;
+    private MainFragmentController controller;
 
     private OmdbController() {
     }
 
-    void connectController(MainActivityController controller) {
+    void connectController(MainFragmentController controller) {
         this.controller = controller;
     }
 
@@ -51,12 +51,6 @@ import java.util.Stack;
                     OmdbResponse response = omdb.search(title);
 
                     movies.add(new Movie(response.getTitle(), response.getYear(), response.getGenre(), response.getPlot(), response.getPoster()));
-
-//                    Log.e("TITLE", response.getTitle());
-//                    Log.e("YEAR", response.getYear());
-//                    Log.e("POSTER", response.getActors());
-//                    Log.e("POSTER", response.getPoster());
-//                    Log.e("PLOT", response.getPlot());
                 }
                 controller.onMoviesReceived();
             } catch (IOException ignored) {

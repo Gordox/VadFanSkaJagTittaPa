@@ -1,6 +1,7 @@
 package gg.gordox.vadfanskajagtittapa;
 
-import android.util.Log;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Toast;
 
@@ -8,9 +9,9 @@ import android.widget.Toast;
  * Created by Spellabbet on 2016-10-27.
  */
 
-class MainActivityController {
+class MainFragmentController {
 
-    private MainActivity activity;
+    private MainFragment ui;
     private GenreAlgorithm algo;
 
     private String gender = "";
@@ -18,10 +19,10 @@ class MainActivityController {
     private String weather = "";
     private String preferred = "";
 
-    MainActivityController(MainActivity activity) {
-        this.activity = activity;
+    MainFragmentController(MainFragment ui) {
+        this.ui = ui;
         OmdbController.getInstance().connectController(this);
-        algo = new GenreAlgorithm(activity);
+        algo = new GenreAlgorithm(ui);
     }
 
     void GenderClick(View view){
@@ -35,33 +36,31 @@ class MainActivityController {
         else{
             gender = "";
         }
-        Log.e("Gender set to", gender);
     }
 
     void MoodClick(View view){
         if(view.getId() == R.id.bn_Mood_Happy){
-            mood = activity.getString(R.string.mood_happy);
+            mood = ui.getString(R.string.mood_happy);
         } else if (view.getId() == R.id.bn_Mood_Sad){
-            mood = activity.getString(R.string.mood_sad);
+            mood = ui.getString(R.string.mood_sad);
         } else if (view.getId() == R.id.bn_Mood_Angry){
-            mood = activity.getString(R.string.mood_angry);
+            mood = ui.getString(R.string.mood_angry);
         } else if (view.getId() == R.id.bn_Mood_Content){
-            mood = activity.getString(R.string.mood_content);
+            mood = ui.getString(R.string.mood_content);
         } else if (view.getId() == R.id.bn_Mood_Sleepy){
-            mood = activity.getString(R.string.mood_sleepy);
+            mood = ui.getString(R.string.mood_sleepy);
         } else {
             mood = "";
         }
-        Log.e("Mood set to", mood);
     }
 
     void SearchClick(View view){
-        if(mood.equals("")) {
-            Toast.makeText(activity, "No mood selected!", Toast.LENGTH_SHORT).show();
+        if(gender.equals("")) {
+            Toast.makeText(ui.getActivity(), "No gender selected! You don't want us to assume your gender, do you?", Toast.LENGTH_LONG).show();
             return;
         }
-        if(gender.equals("")) {
-            Toast.makeText(activity, "No gender selected! You don't want us to assume your gender, do you?", Toast.LENGTH_LONG).show();
+        if(mood.equals("")) {
+            Toast.makeText(ui.getActivity(), "No mood selected!", Toast.LENGTH_SHORT).show();
             return;
         }
         String genre = algo.calcGenre(weather, mood, preferred);
@@ -69,7 +68,11 @@ class MainActivityController {
     }
 
     void onMoviesReceived() {
-        MovieListFragment movieListFragment = new MovieListFragment();
-        movieListFragment.show(activity.getFragmentManager(), "MovieListFragment");
+        FragmentManager fm = ui.getActivity().getFragmentManager();
+
+        FragmentTransaction ft =  fm.beginTransaction().replace(R.id.activity_main,
+                new MovieListFragment(),"movieListFragment");
+        ft.addToBackStack("movieListFragment");
+        ft.commit();
     }
 }

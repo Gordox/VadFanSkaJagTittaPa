@@ -1,6 +1,6 @@
 package gg.gordox.vadfanskajagtittapa;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -30,22 +30,22 @@ class GenreAlgorithm {
 
     private Random random;
 
-    GenreAlgorithm(Activity activity) {
+    GenreAlgorithm(Fragment fragment) {
         random = new Random();
 
-        happy = activity.getString(R.string.mood_happy);
-        sad = activity.getString(R.string.mood_sad);
-        angry = activity.getString(R.string.mood_angry);
-        content = activity.getString(R.string.mood_content);
-        sleepy = activity.getString(R.string.mood_sleepy);
+        happy = fragment.getString(R.string.mood_happy);
+        sad = fragment.getString(R.string.mood_sad);
+        angry = fragment.getString(R.string.mood_angry);
+        content = fragment.getString(R.string.mood_content);
+        sleepy = fragment.getString(R.string.mood_sleepy);
 
-        action = activity.getString(R.string.genre_action);
-        adventure = activity.getString(R.string.genre_adventure);
-        comedy = activity.getString(R.string.genre_comedy);
-        drama = activity.getString(R.string.genre_drama);
-        horror = activity.getString(R.string.genre_horror);
-        romance = activity.getString(R.string.genre_romance);
-        science_fiction = activity.getString(R.string.genre_science_fiction);
+        action = fragment.getString(R.string.genre_action);
+        adventure = fragment.getString(R.string.genre_adventure);
+        comedy = fragment.getString(R.string.genre_comedy);
+        drama = fragment.getString(R.string.genre_drama);
+        horror = fragment.getString(R.string.genre_horror);
+        romance = fragment.getString(R.string.genre_romance);
+        science_fiction = fragment.getString(R.string.genre_science_fiction);
     }
 
     String calcGenre(String weather, String mood, String preferredGenre) {
@@ -56,8 +56,6 @@ class GenreAlgorithm {
         analPreferred(preferredGenre);
 
         int rand = random.nextInt(genres.size());
-
-        Log.e("Random", rand + "");
 
         return genres.get(rand);
     }

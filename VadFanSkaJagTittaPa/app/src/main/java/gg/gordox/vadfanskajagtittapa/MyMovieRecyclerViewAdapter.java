@@ -9,11 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
 class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerViewAdapter.ViewHolder> {
 
     private final List<Movie> movieList;
-
 
     MyMovieRecyclerViewAdapter(List<Movie> items) {
         movieList = items;
