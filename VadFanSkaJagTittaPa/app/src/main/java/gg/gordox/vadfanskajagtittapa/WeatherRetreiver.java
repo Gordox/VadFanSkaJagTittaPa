@@ -51,6 +51,10 @@ public class WeatherRetreiver {
         t.execute();
     }
 
+    public String getCond() {
+        return cond;
+    }
+
     private class WeatherTask extends AsyncTask<String, String, String>
     {
         private String response;

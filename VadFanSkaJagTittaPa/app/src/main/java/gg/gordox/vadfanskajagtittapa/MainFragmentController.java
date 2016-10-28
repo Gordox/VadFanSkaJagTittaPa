@@ -13,6 +13,7 @@ class MainFragmentController {
 
     private MainFragment ui;
     private GenreAlgorithm algo;
+    private WeatherRetreiver weatherRetriver;
 
     private String gender = "";
     private String mood = "";
@@ -23,6 +24,7 @@ class MainFragmentController {
         this.ui = ui;
         OmdbController.getInstance().connectController(this);
         algo = new GenreAlgorithm(ui);
+        weatherRetriver = new WeatherRetreiver(ui.getActivity());
     }
 
     void GenderClick(View view){
@@ -63,6 +65,7 @@ class MainFragmentController {
             Toast.makeText(ui.getActivity(), "No mood selected!", Toast.LENGTH_SHORT).show();
             return;
         }
+        weather = weatherRetriver.getCond();
         String genre = algo.calcGenre(weather, mood, preferred);
         OmdbController.getInstance().search(genre);
     }
