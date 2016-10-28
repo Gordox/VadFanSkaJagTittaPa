@@ -1,16 +1,19 @@
-<resources>
+﻿<resources>
     <!-- Application name -->
     <string name="app_name">VadFanSkaJagTittaPa</string>
 
-    <!-- Genera that are used -->
-    <string name="genre_action">Action</string>
-    <string name="genre_none">None</string>
-    <string name="genre_science_fiction">Science Fiction</string>
-    <string name="genre_romance">Romance</string>
-    <string name="genre_horror">Horror</string>
-    <string name="genre_drama">Drama</string>
-    <string name="genre_comedy">Comedy</string>
-    <string name="genre_adventure">Adventure</string>
+        <!--  -->
+        <string name="progress_weather">Hämtar vädret</string>
+
+        <!-- Genera that are used -->
+        <string name="genre_action">Action</string>
+        <string name="genre_none">None</string>
+        <string name="genre_science_fiction">Science Fiction</string>
+        <string name="genre_romance">Romance</string>
+        <string name="genre_horror">Horror</string>
+        <string name="genre_drama">Drama</string>
+        <string name="genre_comedy">Comedy</string>
+        <string name="genre_adventure">Adventure</string>
 
     <!-- Text in the UI activity_main -->
     <string name="button_search">Search</string>
