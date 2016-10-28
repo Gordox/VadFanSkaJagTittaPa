@@ -2,6 +2,7 @@ package gg.gordox.vadfanskajagtittapa;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by Spellabbet on 2016-10-27.
@@ -10,12 +11,17 @@ import android.view.View;
 class MainActivityController {
 
     private MainActivity activity;
+    private GenreAlgorithm algo;
 
-    private String gender = "", mood = "", genre = "";
+    private String gender = "";
+    private String mood = "";
+    private String weather = "";
+    private String preferred = "";
 
     MainActivityController(MainActivity activity) {
         this.activity = activity;
         OmdbController.getInstance().connectController(this);
+        algo = new GenreAlgorithm(activity);
     }
 
     void GenderClick(View view){
@@ -29,27 +35,36 @@ class MainActivityController {
         else{
             gender = "";
         }
+        Log.e("Gender set to", gender);
     }
 
     void MoodClick(View view){
         if(view.getId() == R.id.bn_Mood_Happy){
-            mood = "Happy";
-        }else if(view.getId() == R.id.bn_Mood_Sad){
-            mood = "Sad";
-        }else if(view.getId() == R.id.bn_Mood_Angry){
-            mood = "Angry";
-        }else if(view.getId() == R.id.bn_Mood_Content){
-            mood = "Content";
-        }else if(view.getId() == R.id.bn_Mood_Sleepy){
-            mood = "Sleepy";
-        }else{
+            mood = activity.getString(R.string.mood_happy);
+        } else if (view.getId() == R.id.bn_Mood_Sad){
+            mood = activity.getString(R.string.mood_sad);
+        } else if (view.getId() == R.id.bn_Mood_Angry){
+            mood = activity.getString(R.string.mood_angry);
+        } else if (view.getId() == R.id.bn_Mood_Content){
+            mood = activity.getString(R.string.mood_content);
+        } else if (view.getId() == R.id.bn_Mood_Sleepy){
+            mood = activity.getString(R.string.mood_sleepy);
+        } else {
             mood = "";
         }
+        Log.e("Mood set to", mood);
     }
 
     void SearchClick(View view){
-        genre = activity.getPreferedGenre().getSelectedItem().toString();
-        Log.e("SIMON SAYS", genre);
+        if(mood.equals("")) {
+            Toast.makeText(activity, "No mood selected!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(gender.equals("")) {
+            Toast.makeText(activity, "No gender selected! You don't want us to assume your gender, do you?", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String genre = algo.calcGenre(weather, mood, preferred);
         OmdbController.getInstance().search(genre);
     }
 

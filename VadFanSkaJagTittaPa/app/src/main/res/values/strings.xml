@@ -18,6 +18,11 @@
 
         <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="mood_happy">Happy</string>
+        <string name="mood_sad">Sad</string>
+    <string name="mood_angry">Angry</string>
+    <string name="mood_content">Content</string>
+    <string name="mood_sleepy">Sleepy</string>
 
 
 </resources>

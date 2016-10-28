@@ -6,13 +6,15 @@ package gg.gordox.vadfanskajagtittapa;
 
 public class Movie {
     public final String title;
-    public final String year;
+    public final String genre;
+    public final String releaseDate;
     public final String plot;
     public final String imageUrl;
 
-    public Movie(String title, String year, String plot, String imageUrl) {
+    public Movie(String title, String releaseDate, String genre, String plot, String imageUrl) {
         this.title = title;
-        this.year = year;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
         this.plot = plot;
         this.imageUrl = imageUrl;
     }

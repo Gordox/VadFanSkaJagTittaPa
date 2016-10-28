@@ -77,7 +77,8 @@ class Movies {
                 "Love Actually",
                 "Eternal Sunshine",
                 "Brokeback Mountain",
-                "The Notebook"
+                "The Notebook",
+                "Bridget Jones’ Diary"
         });
     }
 
