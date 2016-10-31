@@ -47,7 +47,7 @@ class Movies {
 
     private static void init_comedy(Activity activity) {
         data.put(activity.getString(R.string.genre_comedy), new String[]{
-                "Borat",
+                "Snatch",
                 "Zoolander",
                 "The Hangover",
                 "Silver Linings Playbook"

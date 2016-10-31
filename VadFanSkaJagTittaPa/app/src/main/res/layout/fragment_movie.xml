@@ -38,7 +38,9 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:lines="1"
+                    android:maxLines="1" />
 
                 <TextView
                     android:text="Genre"

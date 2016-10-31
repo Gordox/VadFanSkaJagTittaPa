@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return movieList.size();
+        return 1;
     }
 
     @Override
@@ -94,6 +95,16 @@ class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         View view = mInflater.inflate(R.layout.fragment_movie_child_layout, parent, false);
+
+        Log.e("SIMON GROUPPOS", groupPosition + "");
+        Log.e("SIMON CHILDPOS", childPosition + "");
+
+        TextView tvPlot = (TextView) view.findViewById(R.id.tvPlot);
+
+        String nigger = movieList.get(groupPosition).plot;
+        Log.e("SIMON SAYS", nigger);
+
+        tvPlot.setText(nigger);
         return view;
     }
 
