@@ -11,6 +11,9 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
+
 import java.util.List;
 
 class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
@@ -86,7 +89,8 @@ class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
         tvGenre.setText(movie.genre);
         tvReleaseDate.setText(movie.releaseDate);
         //ivPoster.setImageResource(movie.imageUrl);
-
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(movie.imageUrl, ivPoster);
 
         return view;
     }
