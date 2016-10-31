@@ -3,7 +3,6 @@ package gg.gordox.vadfanskajagtittapa;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import java.util.List;
 
@@ -105,10 +103,10 @@ class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
 
         TextView tvPlot = (TextView) view.findViewById(R.id.tvPlot);
 
-        String nigger = movieList.get(groupPosition).plot;
-        Log.e("SIMON SAYS", nigger);
+        String temp = movieList.get(groupPosition).plot;
+        Log.e("SIMON SAYS", temp);
 
-        tvPlot.setText(nigger);
+        tvPlot.setText(temp);
         return view;
     }
 

@@ -35,6 +35,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
         Init();
         setListener();
+
+        getActivity().setTitle("What are we going to watch?");
+
         return myView;
     }
 

@@ -8,5 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvPlot"
-        android:paddingLeft="10dp" />
+        android:padding="16dp"
+        />
 </LinearLayout>

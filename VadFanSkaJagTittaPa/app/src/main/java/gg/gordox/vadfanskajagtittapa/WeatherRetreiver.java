@@ -25,10 +25,14 @@ import java.io.IOException;
  */
 public class WeatherRetreiver {
     private static final String TAG = WeatherRetreiver.class.getName();
-    //private static WeatherRetreiver ourInstance = new WeatherRetreiver();
-    //private static WeatherRetreiver getInstance() {
-    //    return ourInstance;
-    //}
+    private static WeatherRetreiver ourInstance = null;
+    public static WeatherRetreiver getInstance(Activity activity) {
+        if(ourInstance == null)
+        {
+            ourInstance = new WeatherRetreiver(activity);
+        }
+        return ourInstance;
+    }
 
     private static final float KELVIN_OFFSET = -273.15f;
     private static final String API_KEY = "6039dfdf85eb9e8486e84a5753bc019b";
@@ -40,18 +44,14 @@ public class WeatherRetreiver {
     private String cond;
     private Weather.Condition current;
 
-    public WeatherRetreiver(Activity activity) {
+    private WeatherRetreiver(Activity activity) {
         this.activity = activity;
         pos = new Pair<>(MALMÖ.getFirst(), MALMÖ.getSecond());
-    }
-
-    public void run()
-    {
         WeatherTask t = new WeatherTask();
         t.execute();
     }
 
-    public String getCond() {
+    public String getCondition() {
         return cond;
     }
 

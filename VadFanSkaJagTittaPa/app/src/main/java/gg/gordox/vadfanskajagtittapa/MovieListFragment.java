@@ -19,6 +19,8 @@ public class MovieListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie_list, container, false);
 
+        getActivity().setTitle("Recommendations");
+
         Context context = view.getContext();
         ExpandableListView recyclerView = (ExpandableListView) view.findViewById(R.id.movieListLayout);
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));

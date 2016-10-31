@@ -61,7 +61,35 @@ class GenreAlgorithm {
     }
 
     private void analWeather(String weather) {
-
+        if(weather.equals("Thunderstorm") || weather.equals("Extreme"))
+        {
+            genres.add(horror);
+            genres.add(romance);
+        }
+        else if(weather.equals("Rain") || weather.equals("Clouds") || weather.equals("Drizzle"))
+        {
+            genres.add(romance);
+            genres.add(adventure);
+        }
+        else if(weather.equals("Snow"))
+        {
+            genres.add(comedy);
+            genres.add(action);
+        }
+        else if(weather.equals("Atmosphere"))
+        {
+            genres.add(science_fiction);
+        }
+        else if(weather.equals("Clear"))
+        {
+            genres.add(comedy);
+            genres.add(action);
+        }
+        else if(weather.equals("Additional"))
+        {
+            genres.add(adventure);
+            genres.add(horror);
+        }
     }
 
     private void analMood(String mood) {
