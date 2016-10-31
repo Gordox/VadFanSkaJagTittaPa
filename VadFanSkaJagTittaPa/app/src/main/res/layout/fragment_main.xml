@@ -67,6 +67,14 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/calmsmall"
+                    android:id="@+id/bn_Mood_Content"
+                    android:layout_weight="1"
+                    android:onClick="OnMoodClick" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:srcCompat="@drawable/sadsmall"
                     android:layout_weight="1"
                     android:id="@+id/bn_Mood_Sad"
@@ -83,14 +91,6 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/calmsmall"
-                    android:id="@+id/bn_Mood_Content"
-                    android:layout_weight="1"
-                    android:onClick="OnMoodClick" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     app:srcCompat="@drawable/sleepsmall"
                     android:id="@+id/bn_Mood_Sleepy"
                     android:layout_weight="1"
@@ -98,7 +98,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/Genre_preference"
@@ -106,15 +106,16 @@
 
                 <TextView
                     android:text="@string/text_view_select_genre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_Preferred_Genre"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@android:color/background_dark"
+                    android:textAlignment="center" />
 
                 <Spinner
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sp_Genera_Preference_Selector"
                     android:minWidth="200dp" />

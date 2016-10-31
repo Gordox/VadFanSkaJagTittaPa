@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 
 public class MovieListFragment extends Fragment {
 
@@ -18,9 +20,9 @@ public class MovieListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_movie_list, container, false);
 
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view;
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new MyMovieRecyclerViewAdapter(OmdbController.getInstance().getMovies()));
+        ExpandableListView recyclerView = (ExpandableListView) view.findViewById(R.id.movieListLayout);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new MyMovieRecyclerViewAdapter(OmdbController.getInstance().getMovies(), this));
         return view;
     }
 }

@@ -1,65 +1,136 @@
 package gg.gordox.vadfanskajagtittapa;
 
+import android.app.Fragment;
+import android.content.Context;
+import android.database.DataSetObserver;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerViewAdapter.ViewHolder> {
+class MyMovieRecyclerViewAdapter implements ExpandableListAdapter {
 
     private final List<Movie> movieList;
 
-    MyMovieRecyclerViewAdapter(List<Movie> items) {
+    LayoutInflater mInflater;
+
+    MyMovieRecyclerViewAdapter(List<Movie> items, Fragment parent) {
+
         movieList = items;
+        mInflater = (LayoutInflater) parent.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_movie, parent, false);
-        return new ViewHolder(view);
+    public void registerDataSetObserver(DataSetObserver observer) {
+
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.movie = movieList.get(position);
-        holder.tvTitle.setText(movieList.get(position).title);
-        holder.tvGenre.setText(movieList.get(position).genre);
-        holder.tvReleaseDate.setText(movieList.get(position).releaseDate);
-        //holder.ivPoster.setImageResource(/*id here*/);
+    public void unregisterDataSetObserver(DataSetObserver observer) {
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     @Override
-    public int getItemCount() {
+    public int getGroupCount() {
         return movieList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private final View mView;
-        private final TextView tvTitle;
-        private final TextView tvGenre;
-        private final TextView tvReleaseDate;
-        private final ImageView ivPoster;
-        private Movie movie;
-
-        private ViewHolder(View view) {
-            super(view);
-            mView = view;
-            tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-            tvGenre = (TextView) view.findViewById(R.id.tvGenre);
-            tvReleaseDate = (TextView) view.findViewById(R.id.tvReleaseDate);
-            ivPoster = (ImageView) view.findViewById(R.id.ivPoster);
-        }
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        return movieList.size();
     }
+
+    @Override
+    public Object getGroup(int groupPosition) {
+
+        return movieList.get(groupPosition);
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return movieList.get(groupPosition);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return movieList.size()+childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        View view = mInflater.inflate(R.layout.fragment_movie, parent, false);
+
+        Movie movie = movieList.get(groupPosition);
+
+        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+        TextView tvGenre = (TextView) view.findViewById(R.id.tvGenre);
+        TextView tvReleaseDate = (TextView) view.findViewById(R.id.tvReleaseDate);
+        ImageView ivPoster = (ImageView) view.findViewById(R.id.ivPoster);
+
+        tvTitle.setText(movie.title);
+        tvGenre.setText(movie.genre);
+        tvReleaseDate.setText(movie.releaseDate);
+        //ivPoster.setImageResource(movie.imageUrl);
+
+
+        return view;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        View view = mInflater.inflate(R.layout.fragment_movie_child_layout, parent, false);
+        return view;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return false;
+    }
+
+    @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public void onGroupExpanded(int groupPosition) {
+
+    }
+
+    @Override
+    public void onGroupCollapsed(int groupPosition) {
+
+    }
+
+    @Override
+    public long getCombinedChildId(long groupId, long childId) {
+        return 0;
+    }
+
+    @Override
+    public long getCombinedGroupId(long groupId) {
+        return 0;
+    }
+
+
 }

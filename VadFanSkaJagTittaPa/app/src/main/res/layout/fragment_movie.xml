@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -43,8 +45,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvGenre"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp" />
 
@@ -53,8 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvReleaseDate"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp" />
             </LinearLayout>
